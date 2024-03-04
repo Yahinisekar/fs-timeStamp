@@ -13,7 +13,7 @@ let date = format(new Date(), " dd-MM-yyyy  HH-mm-ss");
 const filePath = `timeStamp/${date}.txt`;
   
 
-app.get("/write", (req, res) => {
+app.get("/", (req, res) => {
     try {
       //to write file
     fs.writeFileSync(filePath, `${date}`, "utf8");
