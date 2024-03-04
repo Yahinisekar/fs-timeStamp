@@ -1,16 +1,21 @@
 import express from "express";
+//import file system inbuilt module
 import fs from "fs";
+
 import { format } from "date-fns";
 
 const app = express();
+//the server port 4000
 const PORT = 4000;
 
+//the date  is formatted to be displayed as dd/MM/yyyy HH:mm:ss
 let date = format(new Date(), " dd-MM-yyyy  HH-mm-ss");
 const filePath = `timeStamp/${date}.txt`;
   
 
 app.get("/write", (req, res) => {
-  try {
+    try {
+      //to write file
     fs.writeFileSync(filePath, `${date}`, "utf8");
     res
       .status(200)
@@ -24,9 +29,9 @@ app.get("/write", (req, res) => {
 });
 
 app.get("/read", (req, res) => {
-//   const date = format(new Date(), " dd-MM-yyyy  HH-mm-ss");
-//   const filePath = `timeStamp/${date}.txt`;
-  try {
+
+    try {
+      //to read file
       let date = fs.readFileSync(filePath, "utf8");
      
     res
