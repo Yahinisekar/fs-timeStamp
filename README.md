@@ -15,6 +15,11 @@ The server will start running on port 4000 by default.
 ## Endpoints
 - Write Endpoint
 - Creates a timestamped text file with the current date and time as its content.
+  
+  ## Endpoint: `/getfiles`
+`Method`: GET
+`Response`: The timestamped text files are displayed in the browser.
+
 
 ## Endpoint: /write
 `Method`: GET
