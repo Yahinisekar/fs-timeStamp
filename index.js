@@ -21,7 +21,7 @@ let date = format(today, " dd-MM-yyyy   HH-mm-ss");
 const filePath = `timeStamp/${date}.txt`;
   
 app.get('/', (req, res) => {
-    res.status(200).json({"message": 'Welcome to the Nodejs file system'});
+    res.status(200).send({"message": 'Welcome to the Nodejs file system'});
 })
 app.get("/write", (req, res) => {
     try {
@@ -42,12 +42,15 @@ app.get("/read", (req, res) => {
 
     try {
       //to read file
-      let date = fs.readFileSync(filePath, "utf8");
+       fs.readdir(filePath, "utf8");
+      const data = files.filter((file) => {
+        path.extname(file) === '.txt'
+      });
      
     res
       .status(200)
       .send(
-        `<h1 style="text-align:center;background-color:yellow;">${date}</h1>`
+        `<h1 style="text-align:center;background-color:yellow;">${data}</h1>`
       );
   } catch (error) {
     console.error("Error reading file:", error);
