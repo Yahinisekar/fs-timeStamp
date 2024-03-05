@@ -2,14 +2,14 @@ import express from "express";
 //import file system inbuilt module
 import fs from "fs";
 
-import { format } from "date-fns";
+import { format} from "date-fns";
 
 const app = express();
 //the server port 4000
 const PORT = 4000;
 
 //the date  is formatted to be displayed as dd/MM/yyyy HH:mm:ss
-let date = format(new Date(), " dd-MM-yyyy  HH-mm-ss");
+let date = format(new Date(), " dd-MM-yyyy HH-mm-ss");
 const filePath = `timeStamp/${date}.txt`;
   
 app.get('/', (req, res) => {
