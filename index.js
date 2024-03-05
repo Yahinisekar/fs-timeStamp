@@ -10,12 +10,14 @@ const PORT = 4000;
 
 // function to convert UTC time to Indian Standard Time (IST)
 function convertToIST(utc) {
-    return new Date(utc.toLocalString("en-US", { timeZone: "Asia/Kolkata" }));
+    return new Date(utc.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
 }
 
 
 //the date  is formatted to be displayed as dd/MM/yyyy HH:mm:ss
-let date = format(new Date(), " dd-MM-yyyy HH-mm-ss");
+
+let today = convertToIST(new Date());
+let date = format(today, " dd-MM-yyyy HH-mm-ss");
 const filePath = `timeStamp/${date}.txt`;
   
 app.get('/', (req, res) => {
