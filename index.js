@@ -2,7 +2,8 @@ import express from "express";
 //import file system inbuilt module
 import fs from "fs";
 
-import { format} from "date-fns";
+import { format } from "date-fns";
+import path from 'path';
 
 const app = express();
 //the server port 4000
@@ -42,15 +43,14 @@ app.get("/read", (req, res) => {
 
     try {
       //to read file
-       fs.readdir(filePath, "utf8");
-      const data = files.filter((file) => {
-        path.extname(file) === '.txt'
-      });
-     
+      // const filePath='timeStamp';
+       let data=fs.readFileSync(filePath, "utf8");
+      
     res
       .status(200)
       .send(
-        `<h1 style="text-align:center;background-color:yellow;">${data}</h1>`
+       `<h1 style="text-align:center;background-color:yellow;">${data}</h1>`
+        
       );
   } catch (error) {
     console.error("Error reading file:", error);
@@ -58,6 +58,27 @@ app.get("/read", (req, res) => {
   }
 });
 
+
+// New endpoint to retrieve all text files in a folder
+
+app.get("/getfiles", (req, res) => {
+  const filePath = "timeStamp";
+
+  fs.readdir(filePath, (err, files) => {
+    if (err) {
+      console.error(err);
+      res
+        .status(500)
+        .send("An error occurred while listing the files from the directory");
+    } else {
+      const textFiles = files.filter((file) => path.extname(file) === ".txt");
+      res.status(200).json(textFiles);
+    }
+  });
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server running on the port ${PORT}`);
 });
+
