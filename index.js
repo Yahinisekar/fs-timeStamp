@@ -13,7 +13,8 @@ let date = format(new Date(), " dd-MM-yyyy HH-mm-ss");
 const filePath = `timeStamp/${date}.txt`;
   
 app.get('/', (req, res) => {
-    res.status(200).json({"message": 'Welcome to the Nodejs file system'});
+  res.status(200).json({ "message": 'Welcome to the Nodejs file system' },
+  {endPoint:'/write'},{endPoint:"/read"});
 })
 app.get("/write", (req, res) => {
     try {
