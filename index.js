@@ -22,7 +22,7 @@ let date = format(today, " dd-MM-yyyy   HH-mm-ss");
 const filePath = `timeStamp/${date}.txt`;
   
 app.get('/', (req, res) => {
-    res.status(200).send({"message": 'Welcome to the Nodejs file system'});
+    res.status(200).send(` <h1>Welcome to the Nodejs file system.<br/>  To retrive  timestamp use the endpoint <mark>/getfiles</mark></h1>`);
 })
 app.get("/write", (req, res) => {
     try {
