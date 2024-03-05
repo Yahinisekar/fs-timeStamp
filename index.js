@@ -17,7 +17,7 @@ function convertToIST(utc) {
 //the date  is formatted to be displayed as dd/MM/yyyy HH:mm:ss
 
 let today = convertToIST(new Date());
-let date = format(today, " dd-MM-yyyy HH-mm-ss");
+let date = format(today, " dd-MM-yyyy   HH-mm-ss");
 const filePath = `timeStamp/${date}.txt`;
   
 app.get('/', (req, res) => {
@@ -30,7 +30,7 @@ app.get("/write", (req, res) => {
     res
       .status(200)
       .send(
-        `<h1 style="text-align:center;background-color:aliceblue;">${date}</h1>`
+        `<h1 style="text-align:center;background-color:aliceblue;">File written Successfully : <br/><br/>${date}</h1>`
       );
   } catch (error) {
     console.error("Error writing file:", error);
